@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="btn">
+        <button id="btn1">变宽</button>
+        <button id="btn2">变长</button>
+        <button id="btn3">变色</button>
+        <button id="btn4">隐藏</button>
+        <button id="btn5">重置</button>
+    </div>
+    <div class="box" id="box"></div>
+    <script>
+        //自己做的
+        /*var btn1=document.getElementById('btn1'),
+            btn2=document.getElementById('btn2'),
+            btn3=document.getElementById('btn3'),
+            btn4=document.getElementById('btn4'),
+            btn5=document.getElementById('btn5'),
+            box=document.getElementById('box');
+        btn1.onclick=function(){
+            //每次执行都将之前的样式清除
+            box.style.cssText = ""
+            box.style.width=350+'px'
+        }
+        btn2.onclick=function(){
+            box.style.cssText = ""
+            box.style.height=350+'px'
+        }
+        btn3.onclick=function(){
+            box.style.cssText = ""
+            box.style.background='red'
+        }
+        btn4.onclick=function(){
+            box.style.cssText = ""
+            box.style.display="none"
+        }
+        btn5.onclick=function(){
+            box.style.cssText = ""
+            box.style.display='block'
+        }*/
+
+        //封装函数 将属性放到数组里 遍历数组
+        function changeStyle(ele,att,st){
+            ele.style[att]=st
+        }
+        window.onload=function(){
+            var btn=document.getElementsByTagName('button'),
+                box=document.getElementById('box'),
+                attr=['width','height','background','display','display'],
+                sty=['350px','350px','skyblue','none','block'];
+            for(var i=0;i<btn.length;i++){
+                btn[i].index=i
+                //console.log(i)
+                btn[i].onclick=function(){
+                    console.log(i)
+                    //alert(this.index)
+                    //加以下这句话及时为了能够循环点击 在 点击重置的时候回到最初
+            this.index == btn.length - 1 && (box.style.cssText = "");
+            changeStyle(box,attr[this.index],sty[this.index])
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

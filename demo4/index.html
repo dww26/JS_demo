@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环点击三个div变色</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background:orange;
+            margin-left: 10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div>box1</div>
+    <div>box2</div>
+    <div>box3</div>
+    <button id="btn">点击变色</button>
+    <script>
+        var divs=document.getElementsByTagName('div');
+        var btn=document.getElementById('btn');
+        btn.onclick=function(){
+            //alert("1")
+            for(var i=0;i<divs.length;i++){
+                divs[i].style.background='red'
+            }
+        }
+    </script>
+</body>
+</html>

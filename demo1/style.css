@@ -1,0 +1,18 @@
+* {
+  padding: 0;
+  margin: 0; }
+  * .btn {
+    width: 350px;
+    display: -webkit-flex;
+    margin: 20px auto; }
+    * .btn button {
+      width: 50px;
+      height: 20px;
+      margin-left: 10px; }
+  * .box {
+    width: 100px;
+    height: 100px;
+    background: orange;
+    margin: 50px auto; }
+
+/*# sourceMappingURL=style.css.map */

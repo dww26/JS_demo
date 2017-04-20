@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="box" class="big">
+    <div class="box">
+        <button class="box1"><div class="active" ></div></button>
+        <button class="box2"><div class="active" ></div></button>
+        <button class="box3"><div class="active" ></div></button>
+    </div>
+    <ul class="list" id="list">
+        <li><a href="">新闻</a></li>
+        <li><a href="">娱乐</a></li>
+        <li><a href="">体育</a></li>
+        <li><a href="">广告</a></li>
+        <li><a href="">金融</a></li>
+    </ul>
+</div>
+
+    <script>
+        var box1=document.getElementById('box1'),
+            box2=document.getElementById('box2'),
+            box3=document.getElementById('box3'),
+            button=document.getElementsByTagName('button'),
+            divs=document.getElementsByClassName('active'),
+            box=document.getElementById('box');
+
+        //console.log(divs.length)
+        var colors=["pink","skyblue","limegreen"]
+        for(var i=0;i<button.length;i++){
+            button[i].index=i
+            button[i].onclick=function(){
+                //console.log(this.index)
+                for(var j=0;j<button.length;j++){
+                    divs[j].style.display='none'
+                    box.style.background=colors[j]
+                }
+                divs[this.index].style.display='block'
+                box.style.background=colors[this.index]
+            }
+            divs[i].style.display='none'
+        }
+    </script>
+</body>
+</html>
