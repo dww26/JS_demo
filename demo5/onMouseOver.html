@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      
+        #div{
+            width:200px;
+            height:200px;
+            background:#000;
+            color:#fff;
+            display: flex;
+             margin:20px auto;
+        }
+        #contain{
+            width:180px;
+            height:180px;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div id="div">
+            <div id="contain">
+                 鼠标移入改变样式，鼠标移出恢复。
+            </div>
+        </div>
+    </div>
+    <script>
+        var div=document.getElementById('div')
+        var contain=document.getElementById('contain')
+
+      /*  div.onmouseover=function(){
+
+        }*/
+        function fn(el,event,color){
+            el[event]=function(){
+                el.style.background=color
+            }
+        }
+        fn(div,'onmouseover','red')
+        fn(contain,'onmouseover',"#ccc")
+        fn(div,'onmouseout',"#000")
+        fn(contain,'onmouseout',"#000")
+    </script>
+</body>
+</html>
