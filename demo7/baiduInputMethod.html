@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.wrap{
+			width:300px;
+			margin:20px auto;
+		}
+		ul{
+			width:60px;
+			border:1px solid blue;
+			list-style: none;
+			text-align: center;
+			margin-top:10px;
+			display: none
+		}
+		li{
+			line-height: 30px;
+		}
+		.close{
+			border-top:1px solid blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<input type="button" value="输入法">
+		<ul>
+			<li>手写</li>
+			<li>拼音</li>
+			<li class='close'>关闭</li>
+		</ul>
+	</div>
+	<script>
+		var close=document.getElementsByClassName("close")[0]
+		var btn=document.getElementsByTagName("input")[0]
+		var uls=document.getElementsByTagName('ul')[0]
+		btn.onclick=function(){
+			uls.style.display=   uls.style.display=="block"?     "none":"block"
+			//                         条件                       结果1：结果2
+		}
+	/*	var num = false
+		btn.onclick=function(){
+			if(num == false){
+				uls.style.display="block"
+				num = true
+			}else{
+				uls.style.display="none"
+				num = false
+		}
+		}*/
+		close.onclick=function(){
+			uls.style.display="none"
+		}
+	</script>
+</body>
+</html>
