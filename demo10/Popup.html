@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body,html{
+            width:100%;
+            height:100%;
+            margin:0 auto;
+        }
+        #mark{
+            width:100%;
+            height:100%;
+            background: rgba(0,0,0,0.3);
+            position: absolute;
+            display: none;
+            top:0;
+        }
+        .box{
+            width:300px;
+            height:80px;
+            border:3px solid orange;
+            background:#fff;
+            position: absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            margin:auto;
+        }
+       .center{
+        width:300px;
+        padding:10px;
+        margin: 0 auto;
+       }
+       h2{
+        height:30px;
+        background: orange
+       }
+       span{
+        float:right;
+       }
+    </style>
+</head>
+<body>
+    <div class="center">
+      <button id="btn">弹出层</button>
+    </div>
+    <div id="mark">
+        <div class="box">
+            <h2><span id="remove">x</span></h2>
+        </div>
+    </div>
+    <script>
+        var btn=document.getElementById('btn'),
+            mark=document.getElementById('mark'),
+            remove=document.getElementById('remove')
+            btn.onclick=function(){
+                mark.style.display="block"
+            }
+            remove.onclick=function(){
+                mark.style.display="none"
+            }
+
+    </script>
+</body>
+</html>
