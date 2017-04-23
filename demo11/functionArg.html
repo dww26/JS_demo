@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .outer{
+            margin:0 auto;
+            width:300px;
+        }
+        p{
+            margin-top:15px;
+        }
+        #result{
+            width:200px;
+            height:200px;
+            background: #000;
+            margin-top:15px;
+            color:#fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <p>属性名 :<input type="text" value="background"></p>
+        <p>属性值 :<input type="text" value="black"></p>
+        <p><button id="btn">确定</button><button id="remo">重置</button></p>
+        <div id="result">查看效果</div>
+    </div>  
+    <script>
+        var inp=document.getElementsByTagName('input'),
+            btn=document.getElementById('btn'),
+            remo=document.getElementById('remo'),
+            result=document.getElementById('result')
+           
+          
+            btn.onclick=function(){
+            var cls=inp[0].value,
+                arg=inp[1].value
+                result.style[cls]=arg
+            }
+            remo.onclick=function(){
+                result.style.background='black'
+                result.style.color='#fff'
+            }
+         
+    </script>
+</body>
+</html>
