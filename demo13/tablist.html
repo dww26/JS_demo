@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:600px;
+            height:400px;
+            border:1px solid black;
+            margin:0 auto;
+        }
+        ul{
+            background:black;
+            height:50px;
+        }
+        ul li{
+            margin-left: 20px;
+            float:left;
+            width:180px;
+            color:#fff;
+            line-height: 50px;
+        }
+        .hover{
+            background: #ccc
+        }
+        .clear{
+            clear:both;
+        }
+        ol{
+            display: none
+        }
+        ol li{
+           margin-left: 20px
+        }
+        .show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li>第一课</li>
+            <li>第二课</li>
+            <li>第三课</li>
+        </ul>
+        <div class="clear"></div>
+       <ol class="show">
+           <li>引入函数</li>
+           <li>响应用户操作</li>
+           <li>展开/收缩播放列表效果</li>
+           <li>事件驱动</li>
+           <li>网页换肤效果</li>
+           <li>动手编写第一个JS特效</li>
+           <li>网页特效原理分析</li>
+           <li>元素属性操作</li>
+           <li>提示框效果</li>
+       </ol>
+       <ol>
+           <li>网页特效原理分析</li>
+           <li>响应用户操作</li>
+           <li>提示框效果</li>
+           <li>事件驱动</li>
+           <li>元素属性操作</li>
+           <li>动手编写第一个JS特效</li>
+           <li>引入函数</li>
+           <li>网页换肤效果</li>
+           <li>展开/收缩播放列表效果</li>
+       </ol>
+       <ol>
+           <li>动手编写第一个JS特效</li>
+           <li>事件驱动</li>
+           <li>提示框效果</li>
+           <li>展开/收缩播放列表</li>
+           <li>元素属性操作</li>
+           <li>网页特效原理分析</li>
+           <li>引入函数</li>
+           <li>网页换肤效果</li>
+           <li>效果响应用户操作</li>
+       </ol>
+    </div>
+    <script>
+        var uls=document.getElementsByTagName('ul')[0],
+            lis=uls.getElementsByTagName('li'),
+            ols=document.getElementsByTagName('ol')
+
+        for(var i=0;i<lis.length;i++){
+            lis[i].index=i
+            lis[i].onclick=function(){
+                for(var j=0;j<lis.length;j++){
+                lis[j].className=""
+                ols[j].style.display="none"
+                }
+                lis[this.index].className='hover'
+                ols[this.index].style.display="block"
+               
+            }
+            
+        }
+
+    </script>
+</body>
+</html>
