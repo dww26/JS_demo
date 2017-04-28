@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:320px;
+            height:300px;
+            background: #ccc;
+            margin:50px auto;
+        }
+        b{
+            display: block;
+            margin:5px 0px;
+        }
+        li{
+            background: #666;
+            color:#fff;
+            list-style: none;
+            float:left;
+            width:60px;
+            height:60px;
+            text-align: center;
+            margin-left: 15px;
+            margin-top: 15px
+        }
+        .list{
+            background: #aaa;
+            margin-top: 10px;
+            display: none
+        }
+        .clear{
+            clear: both;
+        }
+        .show{
+            background:#fff;
+            color:pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul id="uls">
+            <li><b>1</b>JAN</li>
+            <li><b>2</b>FER</li>
+            <li><b>3</b>MAR</li>
+            <li><b>4</b>APR</li>
+            <li><b>5</b>MAY</li>
+            <li><b>6</b>JUN</li>
+            <li><b>7</b>JUL</li>
+            <li><b>8</b>AUG</li>
+            <li><b>9</b>SEP</li>
+            <li><b>10</b>OCT</li>
+            <li><b>11</b>NOV</li>
+            <li><b>12</b>DEC</li>
+        </ul>
+        <div class="clear"></div>
+        <div class="list">1111111111</div>
+         <div class="list">222222222</div>
+          <div class="list">33333333333333</div>
+           <div class="list">4444444444</div>
+            <div class="list">555555555</div>
+             <div class="list">6666666666</div>
+              <div class="list">7777777777</div>
+               <div class="list">8888888888</div>
+                <div class="list">1999999999999</div>
+                 <div class="list">1010110101010</div>
+                  <div class="list">aa1111111111</div>
+                   <div class="list">1212121212112</div>
+    </div>
+    <script>
+        var uls=document.getElementById('uls'),
+            lis=uls.getElementsByTagName('li'),
+            list=document.getElementsByClassName('list')
+            
+
+        for(var i=0;i<lis.length;i++){
+            lis[i].index=i
+            lis[i].onmouseover=function(){
+                for(var j=0;j<lis.length;j++){
+                 lis[j].className=""
+                 list[j].style.display="none"
+                }
+                 lis[this.index].className="show"
+                 list[this.index].style.display="block"
+            }
+        }
+    </script>
+</body>
+</html>
