@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.list-item {
+		  display: inline-block;
+		  margin-right: 10px;
+		  transition: all 1s;
+		}
+		.list-enter-active, .list-leave-active {
+		 
+		}
+		.list-enter, .list-leave-active {
+		  opacity: 0;
+		  transform: translateY(30px);
+		}
+		
+		.list-leave-active  {
+		   position: absolute;
+		}
+		
+	/*	.list-move {
+		
+		}*/
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+	  	 <p>{{ msg }}</p>
+	  	 <p>{{ name }}</p>
+	  	 <p>{{ age }}</p>
+		  <button @click="add">Add</button>
+		  <button @click="remove">Remove</button>
+		  <transition-group name="list" tag="ul">
+			<li v-for="item in items" v-bind:key="item" class="list-item">
+			  {{ item }}
+			</li>
+		  </transition-group>
+		
+		
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>	
+<script>
+	
+var obj={
+	msg:"hello",
+	name:"",
+    items: [1,2,3,4,5,6,7,8,9],
+    nextNum: 10,
+	age:""
+  }
+var vm=new Vue({
+  el: '#app',
+  data: obj,
+  methods: {
+    randomIndex: function () {
+      return Math.floor(Math.random() * this.items.length)
+    },
+    add: function () {
+      this.items.splice(this.randomIndex(), 0, this.nextNum++)
+    },
+    remove: function () {
+      this.items.splice(this.randomIndex(), 1)
+    },
+  }
+})	
+
+ vm.age=20;
+
+</script>
+</body>
+</html>

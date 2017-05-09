@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../../../node_modules/animate.css/animate.css">	
+	<title>Document</title>
+
+</head>
+<body>
+	
+	<div id="app">	
+        <input type="text" v-model="w">
+        <p>{{ typeof w }}</p>
+	    <my-tab :my-w="w"></my-tab>
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>
+<script src="../../../node_modules/vue-router/dist/vue-router.min.js"></script>
+<script>
+	
+	
+	Vue.component('myTab',{
+		/*props:{
+			'myW':[Number,String]
+			
+		},*/
+	    props:['myW'],
+		template:"<div>您输入的数据为：{{ myW }}</div>"
+	});
+	
+	
+	var vm =new Vue({
+		el:"#app",
+		data:{
+			title:"父组件的数据11111",
+			w:''
+		}
+	});
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

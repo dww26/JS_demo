@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>关键帧动画</title>
+	<style>
+		.dh-enter {
+		   /* opacity: 0*/
+		   transform:translate3d(-100%,0,0);
+		}
+		
+		.dh-leave-active {
+		   transform:translate3d(100%,0,0);
+		}
+		
+		.dh-enter-active,.dh-leave-active {
+			/*transition: opacity .3s;*/
+			transition:transform .5s;  
+		}
+		
+		.dh-leave-active {
+			display: none;
+		}
+		
+		table,p {
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="show=!show">动画</button>
+		 <transition name="dh">
+		     <table v-if="show">
+		     	<tr><td>姓名</td>	<td>地址</td> </tr>
+		     	<tr v-for="(value,key) in list">
+		     		<td>{{ value.name }}</td>
+		     		<td>{{ value.address }}</td>
+		     	</tr>
+		     </table>
+		     <p v-else>隐藏表格</p>
+		 </transition>
+		
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>	
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    show: false,
+	list:[
+		{ name:"张三",address:"北京"},
+		{ name:"李四",address:"河北"},
+		{ name:"王五",address:"天津"},
+		{ name:"马六",address:"山西"},
+		{ name:"赵七",address:"山东"}
+	]
+  }
+  
+})
+</script>
+</body>
+</html>

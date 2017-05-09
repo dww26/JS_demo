@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../../../node_modules/animate.css/animate.css">	
+	<title>Document</title>
+
+</head>
+<body>
+	
+	<div id="app">	
+        <p>{{ counter }}</p>
+       <!-- <button @click="add">{{ counter }}</button>  -->     
+        <button-add @love="add">{{ counter }}</button-add>       
+        <button-add @love="add">{{ counter }}</button-add>       
+        <button-add @love="add">{{ counter }}</button-add>       
+	</div>
+	
+	
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>
+<script src="../../../node_modules/vue-router/dist/vue-router.min.js"></script>
+<script>
+	
+	Vue.component('buttonAdd',{
+		  template:`<button @click="jia">{{ num }}</button> `,
+		  data() {
+		  	return {
+				num:0
+			}
+		  },
+		  methods:{
+		  	jia() {
+				this.num=this.num+1;
+				this.$emit('love','1505Fe.B');
+			}
+		  }
+		 
+	});
+
+	
+	var vm =new Vue({
+		el:"#app",
+		data:{
+			counter:0
+		},
+		methods:{
+			add(arg) {				
+				console.log(arg);
+				this.counter=this.counter+1;
+			}
+		}
+	});
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

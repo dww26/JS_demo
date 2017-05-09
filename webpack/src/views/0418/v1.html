@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>关键帧动画</title>
+	<style>
+		.dh-enter {
+		    /*opacity: 0*/
+		   transform:translate3d(-100%,0,0);
+		}
+		
+		.dh-leave-active {
+		   transform:translate3d(100%,0,0);
+		}
+		
+		.dh-enter-active,.dh-leave-active {
+			/*transition: opacity .8s;*/
+			transition:transform .5s;  
+		}
+		
+		/*.dh-leave-active {
+			display: none;
+		}*/
+		
+		.btn {		
+			position: absolute;
+		}
+		
+	
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!--<button @click="ok=!ok">切换</button>-->
+		 <transition name="dh" mode="in-out">
+		     <!--<button v-if="ok" class="btn" key="sure">确定</button> 
+		     <button v-else class="btn" key="cancel">取消</button> -->
+		    <!-- <button :key="ok" class="btn">
+		     	{{ ok?"确定11":"取消11" }}
+		     </button>-->
+		     
+		     <button @click="ok=!ok" v-if="ok" key="sure" class="btn">确定</button>
+		     <button @click="ok=!ok" v-else    key="cancel" class="btn">取消</button>
+		 </transition>
+		
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>	
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    ok: true
+  }
+  
+})
+</script>
+</body>
+</html>

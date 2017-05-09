@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.aa {
+			background: #f00;
+		}
+		
+		.bb {
+			color: #00f;
+		}
+		
+		ul,ol {list-style: none}
+	</style>
+</head>
+<body>
+	<div id="app">
+	    
+	    <!--<textarea v-model="m" name="" id="" cols="30" rows="10">	    	
+	    	
+	    </textarea>-->
+	   
+	    <h2>第一版请选择你所在的城市列表:</h2> 
+	  
+	   <ul>
+	   	  <li> 
+	   	   <label for="">北京</label>
+	    	<input type="radio" v-model="m" value="北京">
+	       </li>
+	        <li> 
+	   	   <label for="">上海</label>
+	    	<input type="radio" v-model="m" value="上海">
+	       </li>
+		    <li> 
+	   	   <label for="">天津</label>
+	    	<input type="radio" v-model="m" value="天津">
+	       </li>
+		    <li> 
+	   	   <label for="">深圳</label>
+	    	<input type="radio" v-model="m" value="深圳">
+	       </li>
+	   </ul>
+		<p>您选择的城市为:{{ m }}</p>
+		
+		<h2>你的爱好</h2>
+		<ul>
+			<li>
+				<label for="">阅读</label>
+				<input type="checkbox" name="hobby" v-model="m2" value="阅读">
+			</li>
+				<li>
+				<label for="">上网</label>
+				<input type="checkbox" name="hobby" v-model="m2" value="上网">
+			</li>
+				<li>
+				<label for="">看电影</label>
+				<input type="checkbox" name="hobby" v-model="m2" value="看电影">
+			</li>
+				<li>
+				<label for="">睡觉</label>
+				<input type="checkbox" name="hobby" v-model="m2" value="睡觉">
+			</li>			
+		</ul>
+		
+		<p>您的爱好有</p>
+		<div class="s">
+			<ul v-if="m2.length>0">
+				<li v-for="(value,key) in m2">
+					{{ value }}
+					
+				</li>
+			</ul>
+			<p v-else>您还没有选择您的爱好</p>
+		</div>
+		
+		
+		
+	    <h2>第二版请选择你所在的城市列表:</h2> 
+	  
+	     <select name="" id="" v-model="city" multiple>
+	     	<option v-for="(item,key) in cityList" :value="item.value">
+	     		{{ item.name }}
+	     	</option>
+	     	
+	     </select>
+	 	
+		<p>您选择的城市为:{{ city }}</p>
+	
+	</div>	
+	
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			m:"",
+			m2:[],
+			city:"天津",			
+			cityList:[
+				{id:1001,name:"北京",value:"北京"},
+				{id:1002,name:"上海",value:"上海"},
+				{id:1003,name:"天津",value:"天津"},
+				{id:1004,name:"河北",value:"河北"},
+				{id:1005,name:"深圳",value:"深圳"},
+			]
+			
+		}
+		
+	});
+</script>	
+</body>
+</html>

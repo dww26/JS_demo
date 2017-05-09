@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<p>{{ num |currency('￥','1505FE.B') }}</p>
+		<label for="">请输入数据</label>
+		<input type="text" v-model="m" @keyup.enter="getData()">
+		<!--<p>{{ m |limit(2) }}</p>-->
+		<p>{{ info }}</p>
+		<ul>
+			<li v-for="(item,key) in list">
+				{{ item.text }}
+				<button @click="del(key)">X</button>
+				
+			</li>
+		</ul>
+		
+		
+		<a href="http://www.baidu.com" @click.prevent="say()">百度一下</a>
+		
+		
+		 <div @click="fn3">
+		 	<div @click="fn2">
+		 		<div @click.stop="fn1">
+		 			测试冒泡
+		 		</div>
+		 		
+		 	</div>
+		 </div>
+		
+	</div>
+	
+	
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+	Vue.filter('currency',function(value,arg1,arg2) {
+		console.log(value);				
+		var c=arg1 || "$"		
+	   return c+(value || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');		
+	
+	});
+	
+	Vue.filter('limit',function(value,len) {
+		//console.log(valueI)
+		
+		if(value.length>len) {
+			return value.substr(0,len);
+		}
+		
+	})
+	
+	
+	
+	
+	
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			num:554574575345643,
+			m:"abcdefsdfa",
+			list:[{text:"每一条数据"}]
+			
+		},
+		methods:{
+			getData(e) {				
+			  this.m.trim() && this.list.push({text:this.m});
+			  this.m="";
+			},
+			del(index) {
+			  //console.log(index);
+			  this.list.splice(index,1);
+			},
+			say() {
+				alert(111);
+			},
+			fn1() {
+			  alert('fn1');
+			},
+			fn2() {
+			  alert('fn2');
+			},
+			fn3() {
+			  alert('fn3');
+			}
+			
+		},
+		computed:{
+			info() {
+				return "您好:"+this.m;
+			}
+		}
+	});
+	
+	
+	
+	
+</script>
+</body>
+</html>

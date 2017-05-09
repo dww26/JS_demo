@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>关键帧动画</title>
+	<style>
+		.dh-enter {		  
+		   transform:translate3d(-100%,0,0);
+		}
+		
+		.dh-leave-active {
+		   transform:translate3d(100%,0,0);
+		}
+		
+		.dh-enter-active,.dh-leave-active {		
+			transition:transform .5s;  
+		}
+		
+		div {
+			position: absolute
+		}
+	
+	</style>
+</head>
+<body>
+	<div id="app">	
+	 
+	     <input type="radio" v-model="view" value="one">
+	     <input type="radio" v-model="view"  value="two">	  
+		 <transition name="dh" mode="in-out">		
+		     <component :is="view"></component> 
+		 </transition>
+		
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>	
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    ok: true,
+	view:"one"	
+  },
+  components:{
+		"one":{template:"<div>第一个组件内容</div>"},
+		"two":{template:"<div>第二个组件内容</div>"}
+	}
+  
+})
+</script>
+</body>
+</html>

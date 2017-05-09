@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.aa {
+			background: #f00;
+		}
+		
+		.bb {
+			color: #00f;
+		}
+		
+		ul,ol {list-style: none}
+	</style>
+</head>
+<body>
+	<div id="app">
+	    
+	  <!--   <input type="text" v-model.number="m">
+	     <input type="text" v-model.number="n">
+	 	<p>{{ m+n }}</p>-->
+	 	
+	 	   <input type="text" v-model.lazy="m">
+	  
+		<p>{{ "您输入的结果:"+m+"。" }}</p>
+	</div>	
+	
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+	var vm=new Vue({
+		el:"#app",
+		data:{
+		   m:"",
+		   n:""
+		}
+		
+	});
+</script>	
+</body>
+</html>

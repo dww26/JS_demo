@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<style>
+		.router-link-active {
+			background: #f00;
+			text-decoration: none;
+			
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+	
+		<router-link to="/home">首页</router-link>
+		<router-link to="/fenlei">分类</router-link>
+		<router-link to="/shopping">购物车</router-link>
+		<router-link to="/user/zhangsan">张三</router-link>
+		<router-link to="/user/lisi">李四</router-link>
+		<router-link to="/about">关于</router-link>
+		
+		<transition name="dh">
+			<router-view></router-view>		
+		</transition>
+		
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>
+<script src="../../../node_modules/vue-router/dist/vue-router.min.js"></script>
+<script>
+	
+	//定义路由组件
+	const home={
+		template:"<div>首页内容....</div>"
+	}
+	
+	const fenlei={
+		template:"<div>分类内容....</div>"
+	}
+	
+	const shopping={
+		template:"<div>购物车内容....</div>"
+	}
+	const about={
+		template:"<div>关于内容....</div>"
+	}
+	
+	const user={
+		template:"<div>hello,{{ $route.params.id }}用户</div>"
+	}
+	
+	
+	//配置路由规则
+	const routes=[
+		{
+		  path:"",
+		  component:home
+		},
+		{
+		  path:"/home",
+		  component:home
+		},
+		{
+		  path:"/fenlei",
+		  component:fenlei
+		},
+		{
+		  path:"/shopping",
+		  component:shopping
+		},
+		{
+		  path:"/about",
+		  component:about
+		},
+		{
+		  path:"/user/:id",
+		  component:user
+		}
+	
+	]
+	
+	//实例化路由
+	const router=new VueRouter({
+		routes
+	})
+	
+	
+	const app = new Vue({
+	  				router
+	}).$mount('#app')
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

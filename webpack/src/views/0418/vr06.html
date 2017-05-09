@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+	<style>
+		.router-link-active {
+			background: #f00;
+			text-decoration: none;
+			
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">	
+	    <router-link to="/user/zhangsan">某用户</router-link>
+		<router-link to="/user/zhangsan/profile">张三的基本信息</router-link>
+		<router-link to="/user/zhangsan/posts">张三的地址</router-link>
+		
+	
+		<router-view></router-view>
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>
+<script src="../../../node_modules/vue-router/dist/vue-router.min.js"></script>
+<script>
+	
+	//定义路由组件
+
+const User = {
+  template: `
+    <div class="user">
+      <h2>User {{ $route.params.id }}</h2>
+      <router-view></router-view>
+    </div>
+  `
+}	
+
+
+	
+const UserHome = { template: '<div>张三的首页</div>' }
+const UserProfile = { template: '<div>{{ $route.params.id }}的基本信息的内容...</div>' }
+const UserPosts = { template: '<div>张三的地址的内容</div>' }
+	
+	
+	//配置路由规则
+	const routes=[		
+		{
+		  path:"/user/:id",
+		  component:User,
+		  children:[			  
+			  {
+			    path:"profile",				
+				component:UserProfile,
+				beforeEnter:function(to,from,next){
+				   cosole.log(to)
+				   cosole.log(from)
+				 	
+				 }
+			  },
+			  {
+				path:"posts",
+				component:UserPosts,
+				beforeEnter:function(to,from,next){
+				   cosole.log(to)
+				   cosole.log(from)
+				 	
+				}
+			  }
+			 
+		  ]
+		}		
+	
+	]
+	
+	//实例化路由
+	const router=new VueRouter({
+		//mode:"history",
+		routes
+	})
+
+	
+	
+	
+	const app = new Vue({
+	  				router
+	}).$mount('#app')
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

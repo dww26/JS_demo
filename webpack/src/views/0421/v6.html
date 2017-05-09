@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../../../node_modules/animate.css/animate.css">	
+	<title>Document</title>
+
+</head>
+<body>
+	
+	<div id="app">       
+        <brother-a></brother-a>
+        <brother-b></brother-b>         
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>
+<script src="../../../node_modules/vue-router/dist/vue-router.min.js"></script>
+<script>
+	
+	var bus=new Vue();	
+	
+	Vue.component('brotherA',{
+		  template:`<div><button @click="add">添加</button></div>`,
+		  methods:{
+		  	add() {				
+				bus.$emit('go','我是老大');
+			}
+		  }
+		  
+		 
+		 
+	});
+	
+	Vue.component('brotherB',{
+		  template:`<div>老二{{ add() }}</div>`,
+		  data() {
+		  	return {
+				msg:''
+			}
+		  },
+		  methods:{
+		  	add() {
+				console.log('1111')
+				bus.$on('go',function(arg) {
+					this.msg=arg
+				})
+			}
+		  }
+		  
+		 
+		 
+	});
+	
+	
+	
+	
+	var vm =new Vue({
+		el:"#app"
+	});
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

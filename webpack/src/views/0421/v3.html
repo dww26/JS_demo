@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../../../node_modules/animate.css/animate.css">	
+	<title>Document</title>
+
+</head>
+<body>
+	
+	<div id="app">	
+	  	<!--<my-tab></my-tab>	-->	
+	<!--  	<table>
+	  		<tr is="my-row"></tr>
+	  	</table>
+	  	
+	  	<ul>
+	  		<my-list></my-list>
+	  	</ul>	-->
+	  	
+	  	<my-add></my-add>
+	  	<my-add></my-add>
+	  	<my-add></my-add>
+	  	<my-add></my-add>
+	</div>
+	
+	  
+			
+	
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>
+<script src="../../../node_modules/vue-router/dist/vue-router.min.js"></script>
+<script>
+	
+	var child={
+			template:"<div>子组件</div>"
+		}
+	
+	var biao={
+		template:`<tr>
+					<td>第一列</td>
+					<td>第二列</td>
+					<td>第三列</td>
+				</tr>`
+	}
+	
+	var list={
+		template:`<li>111</li>`
+	}
+	
+	const add = { 
+		template: `
+                <div>					
+					<button @click="add">点击{{ count }}</button>
+				</div>
+			`,
+	    data() {
+		  return {		  	
+			 count:0
+		  }
+		},
+	    methods:{
+			add() {
+				this.count=this.count+1
+			}
+		}
+	}
+	
+	
+	var vm =new Vue({
+		el:"#app",
+		components:{
+			'myTab':child,
+			'myRow':biao,
+			'myList':list,
+			'myAdd':add
+		}
+	});
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

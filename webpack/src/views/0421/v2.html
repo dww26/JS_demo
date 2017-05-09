@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../../../node_modules/animate.css/animate.css">	
+	<title>Document</title>
+	<style>
+		.high {
+			background: #f00;
+			text-decoration: none;
+			
+		}
+		
+		.dh-enter {
+			transform: translate3d(-100%,0,0)		
+		}
+		
+		.dh-leave-active {
+		    display: none;
+		}
+		
+		.dh-enter-active,.dh-leave-active {
+			transition: all 0.5s;
+		}
+		
+		.box {
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">	
+	   <!-- <router-link to="/home">首页</router-link>
+		<router-link to="/fenlei">分类</router-link>
+		<router-link to="/shopping">购物车</router-link>		
+	
+		<transition 
+		   name="dh"
+		>
+			<router-view class="box"></router-view>
+		</transition>-->
+		
+		<!--Vue.component调用-->
+		
+		<my-tab-news></my-tab-news>
+		
+		
+		
+	</div>
+	
+	
+	
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>
+<script src="../../../node_modules/vue-router/dist/vue-router.min.js"></script>
+<script>
+	
+	//1.定义路由组件，用对象定义
+const home = { 
+		template: `
+                <div>
+					<div>首页--{{ str }}</div>
+					<button @click="add">点击{{ count }}</button>
+				</div>
+			`,
+	    data() {
+		  return {
+		  	 str:"我是首页的内容",
+			 count:0
+		  }
+		},
+	    methods:{
+			add() {
+				this.count=this.count+1
+			}
+		}
+	}
+const fenlei = { 
+	              template:`<div>分类的内容...---{{ w }}</div>`,
+	              data(){
+	                  return {
+                         w:"我是分类数据"
+
+                       }
+					}
+			   }
+const shopping = { template: '<div>购物车内容</div>' }
+
+   //2.用Vue.component定义
+
+  Vue.component('myTabNews',{
+  		template:`<div>tab内容--{{ d }}</div>`,
+	    data() {
+			return {
+				d:"tab数据"
+			}
+		}
+  
+  }) 
+	
+	
+	//配置路由规则
+	const routes=[	
+		{
+		  path:"/",
+		  component:home
+		},
+		{
+		  path:"/home",
+		  name:"home",
+		  component:home,
+		  meta:{
+		     aa:"首页标题"
+		  },
+		  beforeEnter(to,from,next) {
+		  	  console.log(to)
+		  	  console.log(from)
+			  document.title=to.meta.aa
+			  next();
+		  }
+		  
+		},
+		{
+		  path:"/fenlei",
+		  name:"fenlei",
+		  component:fenlei,
+		  meta:{
+		     aa:"分类标题"
+		  },
+		  beforeEnter(to,from,next) {
+		  	  console.log(to)
+		  	  console.log(from)
+			  document.title=to.meta.aa
+			  next();
+		  }
+		},
+		{
+		  path:"/shopping",
+		  name:"shopping",
+		  component:shopping,
+		  meta:{
+		     aa:"购物车标题"
+		  },
+		  beforeEnter(to,from,next) {
+		  	  console.log(to)
+		  	  console.log(from)
+			  document.title=to.meta.aa
+			  next();
+		  }
+		}
+	
+	]
+	
+	//实例化路由
+	const router=new VueRouter({
+		//mode:"history",
+		linkActiveClass:"high",
+		routes
+	})
+	
+	
+/*
+	router.beforeEach((to,from,next)=>{
+		console.log(to.meta)
+		//console.log(from)
+		document.title=to.meta.aa;
+		next() 
+	})
+	
+	*/
+	
+	
+	const app = new Vue({
+	  				router
+	}).$mount('#app')
+	;
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<div id="app">
+ 	 <input type="text" v-model="m">
+ 	 <p>{{ m }}</p>
+  	 <button @click="add">添加属性</button>
+	  	 <p>{{ msg }}</p>	  	
+	  	 <p>{{ list.name }}</p>
+	  	 <p>{{ list.age }}</p>
+	  	 <p>{{ list.address }}</p>
+	</div>
+	
+<script src="../../../node_modules/vue/dist/vue.js"></script>	
+<script>
+	
+var obj={
+	msg:"hello",
+	list:{ name:"alice"},
+	m:""
+  }
+var vm=new Vue({
+  el: '#app',
+  data: obj,
+  methods:{
+  	add() {
+	 // this.$set(this.list,'age',18)
+		this.list=Object.assign({},this.list,{age:18,address:"上地"});
+		
+	}
+  }
+})	
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.aa {
+			background: #f00;
+		}
+		
+		.bb {
+			color: #00f;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="checkbox" v-model="flag">
+		 <template v-if="flag && list.length>0">		 	
+		 	<ul>
+			<li v-for="(value,key) in list" :class="key===0?'aa':''">
+				{{ value.name }}			
+			</li>
+	    </ul>	 	
+		 	
+		 </template>		
+		 <p v-else>查无此数据</p>
+		 
+		<!-- <p v-for="i in 20">{{ i }}</p>-->
+		
+		
+	
+		
+		
+	<!--	<p v-show="flag" class="">这是一段文字{{ flag }}</p>-->	
+	 <!--  <p :class="objClass">这是一段文字{{ flag }}</p>-->
+	 <!--  <p :class="flag?'aa':'bb'">这是一段文字{{ flag }}</p>-->
+	<!--  <p :class="[{aa:flag},{bb:flag}]">这是一段文字{{ flag }}</p>-->
+	<!--<ul>
+		<li v-for="(value,key) in list" :class="key===0?'aa':''">
+			{{ value.name }}			
+		</li>
+	    </ul>-->	
+	
+	<!--<p :style="objCss">段落样式</p>-->
+	
+	
+	
+	</div>	
+	
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			flag:true,
+			list:[
+				{ name:"张三",address:"北京"},
+				{ name:"李四",address:"河北"},
+				{ name:"王五",address:"天津"},
+				{ name:"马六",address:"山西"},
+				{ name:"赵七",address:"山东"},
+			],
+			objCss:{color:'yellow',background:'#f00'},
+			//objClass:{aa:this.flag,bb:this.flag}
+			
+		},
+		computed:{
+			objClass() {
+			   return {aa:this.flag,bb:this.flag}
+			}
+		}
+		
+	});
+</script>	
+</body>
+</html>
